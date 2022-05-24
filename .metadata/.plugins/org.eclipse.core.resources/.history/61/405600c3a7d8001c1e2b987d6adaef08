@@ -1,0 +1,154 @@
+package exercise.model;
+
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+@Entity
+@Table(schema = "dbo", name ="Employee")
+
+public class Employee {
+	@Id
+	@Column(name="employee_id")
+	private Long employee_id;
+	
+	@Column(name="password")
+	private String password;
+	
+	@Transient
+	private String passwordConfirm;
+	
+	@Column(name="empfirstname")
+	private String empfirstname;
+	
+	@Column(name="last_name")
+	private String last_name;
+	
+	@Column(name="gender")
+	private int gender;
+	
+	@Column(name="date_of_birth")
+	private Date date_of_birth;
+	
+	@Column(name="phone")
+	private String phone;
+	
+	@Column(name="address")
+	private String address;
+	
+	@Column(name="department_name")
+	private String department_name;
+	
+	@Column(name="remark")
+	private String remark;
+
+	public Long getEmployee_id() {
+		return employee_id;
+	}
+
+	public void setEmployee_id(Long employee_id) {
+		this.employee_id = employee_id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getEmpfirstname() {
+		return empfirstname;
+	}
+
+	public void setFirst_name(String empfirstname) {
+		this.empfirstname = empfirstname;
+	}
+
+	public String getLast_name() {
+		return last_name;
+	}
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
+	}
+
+	public int getGender() {
+		return gender;
+	}
+
+	public void setGender(int gender) {
+		this.gender = gender;
+	}
+
+	public Date getDate_of_birth() {
+		return date_of_birth;
+	}
+
+	public void setDate_of_birth(Date date_of_birth) {
+		this.date_of_birth = date_of_birth;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getDepartment_name() {
+		return department_name;
+	}
+
+	public void setDepartment_name(String department_name) {
+		this.department_name = department_name;
+	}
+
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	@Override
+	public String toString() {
+		return "Employee [employee_id=" + employee_id + ", password=" + password + ", empfirstname=" + empfirstname
+				+ ", last_name=" + last_name + ", gender=" + gender + ", date_of_birth=" + date_of_birth + ", phone="
+				+ phone + ", address=" + address + ", department_name=" + department_name + ", remark=" + remark + "]";
+	}
+
+	public Employee(Long employee_id, String password, String empfirstname, String last_name, int gender,
+			Date date_of_birth, String phone, String address, String department_name, String remark) {
+		super();
+		this.employee_id = employee_id;
+		this.password = password;
+		this.empfirstname = empfirstname;
+		this.last_name = last_name;
+		this.gender = gender;
+		this.date_of_birth = date_of_birth;
+		this.phone = phone;
+		this.address = address;
+		this.department_name = department_name;
+		this.remark = remark;
+	}
+
+	
+	
+	
+}

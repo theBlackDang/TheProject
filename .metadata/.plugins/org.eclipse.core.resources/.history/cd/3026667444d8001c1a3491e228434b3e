@@ -1,0 +1,19 @@
+<http use-expressions="true" >
+    <!-- other configuration -->
+    <form-login login-page='/login.html' 
+      authentication-failure-url="/login.html?error=true"
+      authentication-success-handler-ref="myAuthenticationSuccessHandler"/>
+    <logout/>
+</http>
+
+<beans:bean id="myAuthenticationSuccessHandler"
+  class="com.baeldung.security.MySimpleUrlAuthenticationSuccessHandler" />
+
+<authentication-manager>
+    <authentication-provider>
+        <user-service>
+            <user name="user1" password="{noop}user1Pass" authorities="ROLE_USER" />
+            <user name="admin1" password="{noop}admin1Pass" authorities="ROLE_ADMIN" />
+        </user-service>
+    </authentication-provider>
+</authentication-manager>

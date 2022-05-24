@@ -1,0 +1,10 @@
+package exercise.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import exercise.model.Account;
+import exercise.model.Employee;
+
+public interface AccountRepository extends JpaRepository<Account, Long> {
+	Employee findByAccount(String account);
+}

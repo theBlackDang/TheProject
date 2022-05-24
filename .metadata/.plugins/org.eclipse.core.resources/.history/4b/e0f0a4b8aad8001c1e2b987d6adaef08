@@ -1,0 +1,45 @@
+package exercise.validator;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
+import exercise.model.Employee;
+import exercise.service.EmployeeService;
+import exercise.service.UserService;
+
+@Component
+public class EmployeeValidator implements Validator {
+	@Autowired
+	private EmployeeService employeeService;
+
+	@Override
+	public boolean supports(Class<?> aClass) {
+		return Employee.class.equals(aClass);
+	}
+
+	@Override
+	public void validate(Object o, Errors errors) {
+		Employee emp = (Employee) o;
+
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "employee", "NotEmpty");
+		if (emp.getEmpfirstname().length() < 6 || emp.getEmpfirstname().length() > 32) {
+			errors.rejectValue("username", "Size.userForm.employee"); // 6 - 32
+		}
+		if (employeeService.findByEmpfirstname(emp.getEmpfirstname()) != null) {
+			errors.rejectValue("employee", "Duplicate.userForm.employee");
+		}
+
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
+		if (emp.getPassword().length() < 8 || emp.getPassword().length() > 32) {
+			errors.rejectValue("password", "Size.userForm.password"); // 8 - 32
+		}
+
+		if (!emp.getPasswordConfirm().equals(emp.getPassword())) {
+			errors.rejectValue("passwordConfirm", "Diff.userForm.passwordConfirm");
+		}
+	}
+}

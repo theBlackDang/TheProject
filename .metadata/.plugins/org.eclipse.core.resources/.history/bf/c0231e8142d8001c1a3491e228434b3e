@@ -1,0 +1,13 @@
+package exercise.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import exercise.model.Employee;
+
+
+
+public interface EmployeeRepository extends CrudRepository<Employee, Long> {
+	
+
+		
+}

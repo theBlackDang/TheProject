@@ -1,0 +1,10 @@
+server.port=9090
+spring.datasource.driver-class-name=com.microsoft.sqlserver.jdbc.SQLServerDriver
+spring.jpa.hibernate.ddl-auto=create
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.datasource.url=jdbc:sqlserver://localhost;database=JWD.L.A101db
+spring.datasource.username=haidang
+spring.datasource.password=password
+spring.security.user.name=admin
+spring.security.user.password=password
